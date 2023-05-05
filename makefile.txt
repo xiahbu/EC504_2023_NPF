@@ -1,0 +1,32 @@
+# Specify the compiler
+CXX = g++
+
+# Specify the compilation flags
+CXXFLAGS = -Wall -Wextra -std=c++11 -O2
+
+# Specify the linker flags
+LDFLAGS =
+
+# Specify the source files
+SOURCES = kdtree.cpp main.cpp
+
+# Specify the object files
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# Specify the executable name
+EXECUTABLE = main
+
+# Default target: compile and link the executable
+all: $(EXECUTABLE)
+
+# Link the object files to generate the executable
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@
+
+# Compile the source files to generate the object files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean the object files and executable
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLE)
