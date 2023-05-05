@@ -1,4 +1,17 @@
-all:
-	g++ -std=c++11 -c main.cpp -o npf
+CC = g++
+CFLAGS = -std=c++11 -Wall -Wextra
+
+SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
+EXEC = program
+
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f *.o 
+	rm -f $(OBJS) $(EXEC)
