@@ -3,7 +3,7 @@ CFLAGS = -std=c++11 -Wall -Wextra
 
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-EXEC = program
+EXEC = main
 
 all: $(EXEC)
 
